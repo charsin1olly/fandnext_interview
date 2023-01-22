@@ -19,10 +19,10 @@
           @apply invisible w-0 m-0 p-0;
         }
         input[type="checkbox"] + span {
-          @apply border border-stone-50 bg-stone-50 px-4 py-3 rounded font-normal text-base w-fit flex items-center;
+          @apply border bg-stone-50 px-4 py-3 rounded font-normal text-base w-fit flex items-center;
         }
         input[type="checkbox"] + span > i {
-          @apply border border-stone-200 bg-white rounded text-white mr-2;
+          @apply border border-stone-200 bg-white rounded mr-2;
           width: 17.5px;
           height: 17.5px;
         }
@@ -48,8 +48,8 @@
           id="confirmed_checkbox"
           value="1"
         />
-        <span>
-          <i class="fas fa-check-square"></i>
+        <span class="border-stone-50">
+          <i class="fas fa-check-square text-white"></i>
           <div class="ml-2 text-sm sm:text-xl">confirm</div>
         </span>
       </label>
@@ -64,6 +64,22 @@
         .addEventListener("click", function () {
           alert("welcome to fandnext");
         });
+
+      const checkbox = document.querySelector("input[type='checkbox'] + span");
+      const checkboxValue = document.querySelector("#confirmed_checkbox");
+      const checkboxStatus = document.querySelector(
+        "input[type='checkbox'] + span > i"
+      );
+
+      checkboxValue.addEventListener("click", () => {
+        if (checkboxValue.checked === true) {
+          checkboxStatus.classList.replace("text-white", "text-blue-700");
+          checkbox.classList.replace("border-stone-50", "border-blue-700");
+        } else {
+          checkboxStatus.classList.replace("text-blue-700", "text-white");
+          checkbox.classList.replace("border-blue-700", "border-stone-50");
+        }
+      });
     </script>
   </body>
 </html>
