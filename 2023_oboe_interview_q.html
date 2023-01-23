@@ -27,7 +27,7 @@
           height: 17.5px;
         }
         .btn {
-          @apply border-0 border-b-2 p-0 w-1/4 items-center justify-center text-sm font-bold shadow text-white rounded;
+          @apply border-0 border-b-2 p-0 w-1/4 items-center justify-center text-sm font-bold shadow text-white rounded hover:bg-slate-700 hover:text-white;
           height: 44px;
         }
         .btn-enabled {
@@ -70,6 +70,7 @@
       const checkboxStatus = document.querySelector(
         "input[type='checkbox'] + span > i"
       );
+      const confirmBtn = document.querySelector("#confirm_btn");
 
       checkboxValue.addEventListener("click", () => {
         if (checkboxValue.checked === true) {
