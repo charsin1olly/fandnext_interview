@@ -27,7 +27,7 @@
           height: 17.5px;
         }
         .btn {
-          @apply border-0 border-b-2 p-0 w-1/4 items-center justify-center text-sm font-bold shadow text-white rounded hover:bg-slate-700 hover:text-white;
+          @apply border-0 border-b-2 p-0 w-1/4 items-center justify-center text-sm font-bold shadow text-white rounded;
           height: 44px;
         }
         .btn-enabled {
@@ -58,7 +58,11 @@
       </label>
     </div>
     <p class="error_message">check checkbox</p>
-    <button class="mx-auto flex btn btn-disabled mt-8" id="confirm_btn">
+    <button
+      class="mx-auto flex btn btn-disabled mt-8"
+      id="confirm_btn"
+      disabled
+    >
       create
     </button>
 
@@ -71,20 +75,30 @@
       const checkboxStatus = document.querySelector(".fa-check-square");
       const confirmBtn = document.querySelector("#confirm_btn");
       const errorMessage = document.querySelector(".error_message");
-
-      document.querySelector("#confirmed_checkbox").addEventListener("click", () => {
-        if (document.querySelector("#confirmed_checkbox").checked === true) {
-          checkboxStatus.classList.replace("text-white", "text-blue-700");
-          checkboxBorder.classList.replace("border-stone-50", "border-blue-700");
-          confirm_btn.classList.replace("btn-disabled", "btn-enabled");
-          errorMessage.classList.toggle("hidden");
-        } else {
-          checkboxStatus.classList.replace("text-blue-700", "text-white");
-          checkboxBorder.classList.replace("border-blue-700", "border-stone-50");
-          confirm_btn.classList.replace("btn-enabled", "btn-disabled");
-          errorMessage.classList.toggle("hidden");
-        }
-      });
+      document
+        .querySelector("#confirmed_checkbox")
+        .addEventListener("click", () => {
+          if (document.querySelector("#confirmed_checkbox").checked === true) {
+            checkboxStatus.classList.replace("text-white", "text-blue-700");
+            checkboxBorder.classList.replace(
+              "border-stone-50",
+              "border-blue-700"
+            );
+            confirm_btn.classList.replace("btn-disabled", "btn-enabled");
+            confirm_btn.classList.toggle("hover:bg-slate-700");
+            errorMessage.classList.toggle("hidden");
+          } else {
+            checkboxStatus.classList.replace("text-blue-700", "text-white");
+            checkboxBorder.classList.replace(
+              "border-blue-700",
+              "border-stone-50"
+            );
+            confirm_btn.classList.replace("btn-enabled", "btn-disabled");
+            confirm_btn.classList.toggle("hover:bg-slate-700");
+            errorMessage.classList.toggle("hidden");
+          }
+          confirm_btn.disabled = !confirm_btn.disabled;
+        });
     </script>
   </body>
 </html>
